@@ -30,13 +30,13 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         id: run_a_one_line_script
-        if: ${{ !cancelled() && steps.uses_checkout_v3.outcome == 'success' }}
+        if: ${{ success() && !cancelled() && steps.uses_checkout_v3.outcome == 'success' }}
         run: echo Hello, world!
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         id: run_a_multi_line_script
-        if: ${{ !cancelled() && steps.run_a_one_line_script.outcome == 'success' }}
+        if: ${{ success() && !cancelled() && steps.run_a_one_line_script.outcome == 'success' }}
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
